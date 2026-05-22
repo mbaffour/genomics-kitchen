@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest an improvement
+body:
+  - type: input
+    id: tool
+    attributes:
+      label: Which tool/station?
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+  - type: textarea
+    id: feature
+    attributes:
+      label: Proposed feature
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Scientific workflow it supports
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context

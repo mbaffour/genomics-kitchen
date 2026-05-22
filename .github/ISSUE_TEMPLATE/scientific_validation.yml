@@ -1,0 +1,31 @@
+name: Scientific validation
+description: Report a scientific behavior concern
+body:
+  - type: input
+    id: tool
+    attributes:
+      label: Tool/station
+  - type: textarea
+    id: concern
+    attributes:
+      label: Scientific concern
+  - type: textarea
+    id: input
+    attributes:
+      label: Example input
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected scientific behavior
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+  - type: textarea
+    id: references
+    attributes:
+      label: References or reasoning
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction

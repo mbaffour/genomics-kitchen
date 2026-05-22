@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use Genomics Kitchen in your work, please cite it using the metadata below."
+title: "Genomics Kitchen: Browser-based sequence preparation tools for reproducible genomics workflows"
+version: "0.1.0"
+authors:
+  - family-names: "Awuah"
+    given-names: "Michael Baffour"
+repository-code: "https://github.com/mbaffour890/genomics-kitchen"
+url: "https://mbaffour890.github.io/genomics-kitchen/"
+license: "MIT"

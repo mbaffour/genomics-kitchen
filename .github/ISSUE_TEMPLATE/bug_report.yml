@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a problem in Genomics Kitchen
+body:
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool/station affected
+      options: [SeqSieve, ReadLens, SeqCompare, ORFScout, HMMForge, Taste Tests, Documentation]
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and operating system
+  - type: input
+    id: format
+    attributes:
+      label: Input format
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened?
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+  - type: textarea
+    id: example
+    attributes:
+      label: Small example file or sequence, if safe to share
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context

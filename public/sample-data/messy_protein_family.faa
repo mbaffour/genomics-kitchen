@@ -1,10 +1,10 @@
->alpha member good
+>alpha_good member good
 MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQANN
->alpha duplicate
+>alpha_duplicate exact duplicate
 MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQANN
->alpha short
+>alpha_short short member
 MKTAYI
->alpha x rich
+>alpha_x_rich x rich member
 MKXXXXXXQRQISFVKSHFSRQLEERLGLIEVQANN
->alpha internal_stop
+>alpha_internal_stop internal stop member
 MKTAYIAK*RQISFVKSHFSRQLEERLGLIEVQANN

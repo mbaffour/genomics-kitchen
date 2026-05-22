@@ -4,8 +4,8 @@ export const demoData = {
   compareA: `>core1\nATGAAATAG\n>core2\nATGCCCTAA\n>A_only\nATGTTTTAA\n`,
   compareB: `>core1_renamed\nATGAAATAG\n>core2\nATGCCCTAA\n>B_only\nATGGGGTAA\n`,
   compareC: `>core1\nATGAAATAG\n>core2\nATGCCCTAA\n>C_only\nATGAACTGA\n`,
-  phageGenome: `>small_phage_like_genome synthetic\nAAATGAAACCCGGGTTTTAAACCCATGAAAAAAGGGGGGTAGTTTATGCCCTTTAAATGA\n`,
-  messyProteinFamily: `>alpha member good\nMKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQANN\n>alpha duplicate\nMKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQANN\n>alpha short\nMKTAYI\n>alpha x rich\nMKXXXXXXQRQISFVKSHFSRQLEERLGLIEVQANN\n>alpha internal_stop\nMKTAYIAK*RQISFVKSHFSRQLEERLGLIEVQANN\n`,
+  phageGenome: `>small_phage_like_genome synthetic\nAAAATGGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTGCTTAAACCCATGAAAGGGTAGTTT\n`,
+  messyProteinFamily: `>alpha_good member good\nMKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQANN\n>alpha_duplicate exact duplicate\nMKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQANN\n>alpha_short short member\nMKTAYI\n>alpha_x_rich x rich member\nMKXXXXXXQRQISFVKSHFSRQLEERLGLIEVQANN\n>alpha_internal_stop internal stop member\nMKTAYIAK*RQISFVKSHFSRQLEERLGLIEVQANN\n`,
 };
 
 export const sampleFiles = {

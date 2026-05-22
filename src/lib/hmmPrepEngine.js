@@ -39,7 +39,8 @@ export function runHMMForge(text, settings = {}) {
     "# Optional consensus/profile inspection:",
     "hmmemit -c protein_family.hmm > protein_family_consensus.faa",
   ].join("\n");
-  const summary = { inputProteins: parsed.records.length, keptProteins: kept.length, flaggedProteins: flagged.length, removedProteins: removed.length, duplicateGroups: duplicateRows.length ? new Set(duplicateRows.map((r) => r.group_id)).size : 0, medianLength: med, lengthRange: `${Math.min(0, ...lengths)}-${Math.max(0, ...lengths)}` };
+  const lengthRange = lengths.length ? `${Math.min(...lengths)}-${Math.max(...lengths)}` : "0-0";
+  const summary = { inputProteins: parsed.records.length, keptProteins: kept.length, flaggedProteins: flagged.length, removedProteins: removed.length, duplicateGroups: duplicateRows.length ? new Set(duplicateRows.map((r) => r.group_id)).size : 0, medianLength: med, lengthRange };
   const warnings = [
     ...parsed.warnings,
     "HMMForge prepares files; it does not replace biological judgment.",

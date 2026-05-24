@@ -5,6 +5,6 @@ version: "0.1.0"
 authors:
   - family-names: "Awuah"
     given-names: "Michael Baffour"
-repository-code: "https://github.com/mbaffour890/genomics-kitchen"
-url: "https://mbaffour890.github.io/genomics-kitchen/"
+repository-code: "https://github.com/mbaffour/genomics-kitchen"
+url: "https://mbaffour.github.io/genomics-kitchen/"
 license: "MIT"

@@ -1,7 +1,7 @@
 .live-art { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .24; }
 .live-art svg { position: absolute; right: -80px; top: 80px; width: min(70vw, 900px); height: auto; }
-.steam { fill: none; stroke: var(--gk-mint); stroke-width: 4; opacity: .22; stroke-dasharray: 12 18; animation: steam 11s linear infinite; }
-.steam-b { stroke: var(--gk-sky); animation-duration: 14s; }
+.steam { fill: none; stroke: var(--gk-sky); stroke-width: 4; opacity: .18; stroke-dasharray: 12 18; animation: steam 11s linear infinite; }
+.steam-b { stroke: var(--gk-coral); animation-duration: 14s; }
 .steam-c { stroke: var(--gk-berry); animation-duration: 17s; }
 .grid-lines line { stroke: var(--gk-border); opacity: .18; }
 .phage-shape circle, .phage-shape path { fill: none; stroke: var(--gk-citrus); stroke-width: 3; opacity: .22; }

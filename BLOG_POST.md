@@ -78,7 +78,7 @@ Exact deduplication is not clustering. ORF prediction is not gene annotation. HM
 
 ## Bugs and Features
 
-Open an issue at <https://github.com/mbaffour890/genomics-kitchen/issues>. Include the tool, browser/OS, file format, expected behavior, observed behavior, screenshots if possible, and a small non-sensitive example file if safe.
+Open an issue at <https://github.com/mbaffour/genomics-kitchen/issues>. Include the tool, browser/OS, file format, expected behavior, observed behavior, screenshots if possible, and a small non-sensitive example file if safe.
 
 ## Short Website Version
 

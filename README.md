@@ -1,12 +1,12 @@
 # Genomics Kitchen
 
-[![Deploy Genomics Kitchen to GitHub Pages](https://github.com/mbaffour890/genomics-kitchen/actions/workflows/deploy.yml/badge.svg)](https://github.com/mbaffour890/genomics-kitchen/actions/workflows/deploy.yml)
+[![Deploy Genomics Kitchen to GitHub Pages](https://github.com/mbaffour/genomics-kitchen/actions/workflows/deploy.yml/badge.svg)](https://github.com/mbaffour/genomics-kitchen/actions/workflows/deploy.yml)
 
 **Cook clean sequence data.**
 
 Genomics Kitchen is a browser-based molecular kitchen for preparing FASTA and FASTQ files with local-only tools for deduplication, quality inspection, multi-file sequence comparison, ORF discovery, and HMM-ready protein family cleanup.
 
-Live demo: <https://mbaffour890.github.io/genomics-kitchen/>
+Live demo: <https://mbaffour.github.io/genomics-kitchen/>
 
 ## Screenshots
 
@@ -87,11 +87,11 @@ npm run preview
 
 Push to `main`. In repository Settings -> Pages, select GitHub Actions as the source if needed. The workflow in `.github/workflows/deploy.yml` builds the Vite app with `base: "/genomics-kitchen/"` and deploys `dist`.
 
-Deployment URL: <https://mbaffour890.github.io/genomics-kitchen/>
+Deployment URL: <https://mbaffour.github.io/genomics-kitchen/>
 
 ## Report Bugs and Request Features
 
-Open an issue at <https://github.com/mbaffour890/genomics-kitchen/issues>. Include the tool, browser/OS, input format, expected behavior, observed behavior, screenshots if possible, and a small non-sensitive example file if safe.
+Open an issue at <https://github.com/mbaffour/genomics-kitchen/issues>. Include the tool, browser/OS, input format, expected behavior, observed behavior, screenshots if possible, and a small non-sensitive example file if safe.
 
 ## Contributing
 

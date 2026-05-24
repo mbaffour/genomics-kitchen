@@ -40,4 +40,4 @@ Use HMMForge to upload protein FASTA, deduplicate exact sequences, set filters, 
 
 Exact deduplication is not clustering. ORF prediction is not gene annotation. HMMForge prepares files and command recipes; it does not run HMMER in the browser. FASTQ deduplication can affect abundance interpretation.
 
-Open issues at <https://github.com/mbaffour890/genomics-kitchen/issues>.
+Open issues at <https://github.com/mbaffour/genomics-kitchen/issues>.

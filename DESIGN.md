@@ -20,11 +20,12 @@ Genomics Kitchen is a molecular kitchen where raw sequence ingredients are clean
 ## Visual Language
 
 - Dark molecular kitchen countertop and clean lab-bench light mode.
+- Modern, colorful, professional accents rather than a single green theme.
+- Realistic generated photography for hero and station cards: glass, steel, wood, bead-like sequence ingredients, protein ribbon models, and grounded shadows.
 - Glass ingredient jars, cutting boards, recipe cards, sifters, measuring cups, progress oven, and export pantry.
-- Realistic generated photography for the hero and station cards: glass, steel, wood, bead-like sequence ingredients, protein ribbon models, and grounded shadows.
 - Subtle DNA steam, protein spices, phage-shaped utensils, and molecular cutting-board grids as supporting details only.
 
-Avoid cartoonish children’s-game styling, generic blue dashboards, stock kitchen clipart, excessive gradients, low-contrast neon, fake AI hype, synthetic “AI art” clutter, and scientific overclaiming.
+Avoid cartoonish children's-game styling, generic blue dashboards, stock kitchen clipart, excessive gradients, low-contrast neon, fake AI hype, synthetic AI-art clutter, and scientific overclaiming.
 
 ## Tokens
 
@@ -39,14 +40,18 @@ Dark theme:
 --gk-border: #344054;
 --gk-text: #F3F7FB;
 --gk-text-muted: #AAB6C5;
---gk-mint: #38D9A9;
---gk-citrus: #F9D65C;
---gk-berry: #A78BFA;
+--gk-sky: #38BDF8;
+--gk-coral: #FF8A65;
+--gk-citrus: #FACC15;
+--gk-berry: #C084FC;
+--gk-plum: #818CF8;
+--gk-mint: #2DD4BF;
 --gk-heat: #FB7185;
---gk-sky: #67E8F9;
 ```
 
-Light theme uses `#FFFDF7`, `#F7F4EA`, `#FFFFFF`, `#D8DEE8`, `#172033`, and `#5F6B7A`.
+Palette rule: use the accents as a colorful station system, not a single green brand wash. Coral is the main action color, sky is the privacy/information color, citrus is the warmth/highlight color, berry/plum provide tool variety, and mint is a supporting biological freshness accent.
+
+Light theme uses `#FFFDF7`, `#F7F4EA`, `#FFFFFF`, `#CBD5E1`, `#172033`, and `#5F6B7A`.
 
 ## Typography
 

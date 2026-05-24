@@ -4,4 +4,4 @@ Genomics Kitchen processes files locally in the browser. Sequence data are not u
 
 Please do not share sensitive sequence data publicly in issues. If you report a privacy or security problem, use a small synthetic example whenever possible.
 
-Report concerns through GitHub issues at <https://github.com/mbaffour890/genomics-kitchen/issues>.
+Report concerns through GitHub issues at <https://github.com/mbaffour/genomics-kitchen/issues>.

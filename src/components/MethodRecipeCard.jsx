@@ -6,7 +6,7 @@ export default function MethodRecipeCard({ methods, settings }) {
   return (
     <section className="method-card">
       <div>
-        <p className="panel-kicker">Recipe Card</p>
+        <p className="panel-kicker">Methods & Reproducibility</p>
         <h3>Methods-ready paragraph</h3>
       </div>
       <p>{methods}</p>

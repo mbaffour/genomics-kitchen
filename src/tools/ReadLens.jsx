@@ -25,7 +25,7 @@ export default function ReadLens({ setPage }) {
     updateWorkspace({ currentFileName: input.name, currentSequenceType: out.sequenceType, lastReport: out.exports.report });
   }
   return (
-    <KitchenBench title="ReadLens" kitchenTitle="Quality Tasting Station" subtitle="FASTA/FASTQ quality inspection for sequence length, composition, duplication, and parser warnings." icon={<QualityTastingIcon />}>
+    <KitchenBench title="ReadLens" kitchenTitle="Sequence Quality Control" subtitle="FASTA/FASTQ quality inspection for sequence length, composition, duplication, and parser warnings." icon={<QualityTastingIcon />}>
       <IngredientDropzone fileName={input.name} text={input.text} onLoad={setInput} onSample={() => setInput(sampleFiles.ReadLens)} onClear={() => { setInput({ name: "", text: "" }); setResult(null); }} />
       <RecipeControls>
         <Field label="Format"><select value={settings.format} onChange={(e) => set({ format: e.target.value })}><option>Auto</option><option>FASTA</option><option>FASTQ</option></select></Field>
@@ -36,7 +36,7 @@ export default function ReadLens({ setPage }) {
         <Field label="Case-sensitive duplicate check"><input type="checkbox" checked={settings.caseSensitive} onChange={(e) => set({ caseSensitive: e.target.checked })} /></Field>
         <Field label="Reverse-complement duplicate estimate"><input type="checkbox" checked={settings.reverseComplement} onChange={(e) => set({ reverseComplement: e.target.checked })} /></Field>
       </RecipeControls>
-      <button className="button primary run-button" disabled={!input.text} onClick={run}>Taste Quality</button>
+      <button className="button primary run-button" disabled={!input.text} onClick={run}>Inspect quality</button>
       {result && <><ResultPlate summary={result.summary} /><ChartPanel charts={result.charts} /><DataTable rows={result.recordMetrics} /><DataTable rows={result.duplicates} /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="readlens" exports={result.exports} /><button className="button secondary" onClick={() => setPage("SeqSieve")}>Send to SeqSieve</button></>}
       <HelpDrawer><p>Duplicate reads are a signal to interpret, not an automatic failure. Protein inputs skip GC/N as biological metrics.</p></HelpDrawer>
     </KitchenBench>

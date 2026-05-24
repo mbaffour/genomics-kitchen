@@ -1,6 +1,6 @@
 # Genomics Kitchen Design System
 
-Genomics Kitchen is a molecular kitchen where raw sequence ingredients are cleaned, inspected, sifted, compared, translated, and prepared for downstream analysis.
+Genomics Kitchen is a browser-based sequence preparation suite that uses a light culinary visual metaphor without letting the metaphor dominate the scientific workflow.
 
 ## Brand
 
@@ -13,17 +13,17 @@ Genomics Kitchen is a molecular kitchen where raw sequence ingredients are clean
 1. Make bioinformatics feel approachable.
 2. Make complex sequence workflows intuitive.
 3. Preserve scientific seriousness.
-4. Use playful kitchen metaphors without weakening accuracy.
+4. Use playful culinary details sparingly without weakening accuracy or professionalism.
 5. Make every output reproducible and publication-aware.
 6. Use motion and live art to guide the user, not distract them.
 
 ## Visual Language
 
-- Dark molecular kitchen countertop and clean lab-bench light mode.
+- Dark molecular bench and clean lab-bench light mode.
 - Modern, colorful, professional accents rather than a single green theme.
-- Realistic generated photography for hero and station cards: glass, steel, wood, bead-like sequence ingredients, protein ribbon models, and grounded shadows.
-- Glass ingredient jars, cutting boards, recipe cards, sifters, measuring cups, progress oven, and export pantry.
-- Subtle DNA steam, protein spices, phage-shaped utensils, and molecular cutting-board grids as supporting details only.
+- Realistic generated photography for hero and tool cards: glass, steel, wood, bead-like sequence models, protein ribbon models, and grounded shadows.
+- Familiar lab/workbench objects, subtle cutting-board geometry, clean labels, and export cards as supporting details only.
+- Tool imagery must be specific to the biology task: deduplication, quality inspection, multi-file comparison, ORF discovery, or protein-family preparation.
 
 Avoid cartoonish children's-game styling, generic blue dashboards, stock kitchen clipart, excessive gradients, low-contrast neon, fake AI hype, synthetic AI-art clutter, and scientific overclaiming.
 
@@ -49,7 +49,7 @@ Dark theme:
 --gk-heat: #FB7185;
 ```
 
-Palette rule: use the accents as a colorful station system, not a single green brand wash. Coral is the main action color, sky is the privacy/information color, citrus is the warmth/highlight color, berry/plum provide tool variety, and mint is a supporting biological freshness accent.
+Palette rule: use the accents as a colorful tool system, not a single green brand wash. Coral is the main action color, sky is the privacy/information color, citrus is the warmth/highlight color, berry/plum provide tool variety, and mint is a supporting biological freshness accent.
 
 Light theme uses `#FFFDF7`, `#F7F4EA`, `#FFFFFF`, `#CBD5E1`, `#172033`, and `#5F6B7A`.
 
@@ -59,19 +59,19 @@ UI font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Se
 
 Monospace: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace.
 
-## Component Metaphors
+## Component Voice
 
-- Upload area: Ingredient Drop
-- Multiple-file upload: Ingredient Rack
-- Settings: Recipe Controls
-- Run button: Start Cooking
-- Progress: Cooking Progress
-- Results: Tasting Notes
-- Warnings: Kitchen Safety Notes
-- Exports: Pack to Pantry
-- Methods paragraph: Recipe Card
-- Validation tests: Taste Tests
-- Demo data: Sample Ingredients
+- Upload area: Input File
+- Multiple-file upload: Input Files
+- Settings: Analysis Settings
+- Run button: direct scientific action, such as Deduplicate sequences or Find ORFs
+- Progress: Processing Progress
+- Results: Results Summary
+- Warnings: Scientific Notes & Warnings
+- Exports: Export Results
+- Methods paragraph: Methods & Reproducibility
+- Validation tests: Validation
+- Demo data: Sample data
 
 ## Accessibility
 

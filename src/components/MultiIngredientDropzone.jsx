@@ -8,12 +8,12 @@ export default function MultiIngredientDropzone({ files, onLoad, onRemove, onSam
   }
   return (
     <section className="panel dropzone">
-      <p className="panel-kicker">Ingredient Rack</p>
+      <p className="panel-kicker">Input Files</p>
       <h2>Upload two or more FASTA files</h2>
       <label className="file-button">Choose FASTA files<input type="file" multiple accept=".fasta,.fa,.faa,.fna,.fas,.txt" onChange={handleFiles} /></label>
       <div className="drop-actions">
-        <button className="button secondary" onClick={onSample}>Load Sample Ingredients</button>
-        <button className="button ghost" onClick={onClear}>Clear rack</button>
+        <button className="button secondary" onClick={onSample}>Load sample data</button>
+        <button className="button ghost" onClick={onClear}>Clear files</button>
       </div>
       <div className="jar-grid">
         {files.map((file, i) => (

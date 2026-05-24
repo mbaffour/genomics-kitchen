@@ -2,9 +2,9 @@
 
 [![Deploy Genomics Kitchen to GitHub Pages](https://github.com/mbaffour/genomics-kitchen/actions/workflows/deploy.yml/badge.svg)](https://github.com/mbaffour/genomics-kitchen/actions/workflows/deploy.yml)
 
-**Cook clean sequence data.**
+**Prepare clean sequence data.**
 
-Genomics Kitchen is a browser-based molecular kitchen for preparing FASTA and FASTQ files with local-only tools for deduplication, quality inspection, multi-file sequence comparison, ORF discovery, and HMM-ready protein family cleanup.
+Genomics Kitchen is a browser-based sequence preparation suite for FASTA and FASTQ files, with local-only tools for deduplication, quality inspection, multi-file sequence comparison, ORF discovery, and HMM-ready protein family cleanup.
 
 Live demo: <https://mbaffour.github.io/genomics-kitchen/>
 
@@ -25,11 +25,11 @@ Genomics Kitchen processes files locally in your browser. Sequence data are not 
 
 ## Tools
 
-- **SeqSieve, Sequence Sifter:** exact FASTA/FASTQ deduplication with counts, mapping tables, duplicate groups, and reports.
-- **ReadLens, Quality Tasting Station:** sequence length, composition, FASTQ quality, duplicate estimates, and parser warnings.
-- **SeqCompare, Comparison Cutting Board:** multi-file FASTA comparison for core, accessory, file-specific, shared-by-subset, presence/absence, and pairwise overlap outputs.
-- **ORFScout, Gene Recipe Finder:** six-frame translation and ORF discovery with 1-based inclusive coordinates.
-- **HMMForge, Protein Prep Bench:** protein family cleanup, safe IDs, filtering reports, and MAFFT/HMMER command recipes.
+- **SeqSieve:** exact FASTA/FASTQ deduplication with counts, mapping tables, duplicate groups, and reports.
+- **ReadLens:** sequence length, composition, FASTQ quality, duplicate estimates, and parser warnings.
+- **SeqCompare:** multi-file FASTA comparison for core, accessory, file-specific, shared-by-subset, presence/absence, and pairwise overlap outputs.
+- **ORFScout:** six-frame translation and ORF discovery with 1-based inclusive coordinates.
+- **HMMForge:** protein family cleanup, safe IDs, filtering reports, and MAFFT/HMMER command recipes.
 
 ## Supported Formats
 
@@ -49,7 +49,7 @@ FASTQ deduplication can alter apparent abundance. Keep mapping and count tables.
 
 ## Outputs
 
-Each station produces methods-ready text, summary TXT, reproducibility JSON, TSV tables, and relevant FASTA/FASTQ outputs. Filenames follow `genomics-kitchen_TOOL_INPUT_YYYYMMDD_HHMM.ext`.
+Each tool produces methods-ready text, summary TXT, reproducibility JSON, TSV tables, and relevant FASTA/FASTQ outputs. Filenames follow `genomics-kitchen_TOOL_INPUT_YYYYMMDD_HHMM.ext`.
 
 ## Example Workflows
 
@@ -60,7 +60,7 @@ Each station produces methods-ready text, summary TXT, reproducibility JSON, TSV
 
 ## Tutorials
 
-See `docs/tutorials/` for station-specific tutorials and workflow guides.
+See `docs/tutorials/` for tool-specific tutorials and workflow guides.
 
 ## Methods Language
 
@@ -70,9 +70,9 @@ Example: “Multiple FASTA sequence sets were compared using SeqCompare within G
 
 Large files are limited by browser memory. Genomics Kitchen warns above 50 MB and strongly warns above 250 MB. Large tables are previewed in the UI and exported in full.
 
-## Taste Tests
+## Validation
 
-Open the Taste Tests page to run parser, reverse-complement, translation, ORF coordinate, deduplication, QC, comparison, HMMForge, and export checks.
+Open the Validation page to run parser, reverse-complement, translation, ORF coordinate, deduplication, QC, comparison, HMMForge, and export checks.
 
 ## Development
 

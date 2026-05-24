@@ -15,7 +15,7 @@ import { runDedupe } from "../lib/dedupeEngine.js";
 import { sampleFiles } from "../lib/demoData.js";
 import { useWorkspace } from "../context/WorkspaceContext.jsx";
 
-const stages = ["Reading ingredients", "Parsing records", "Normalizing sequences", "Sifting duplicates", "Plating representatives", "Packing pantry exports"];
+const stages = ["Reading input", "Parsing records", "Normalizing sequences", "Grouping exact duplicates", "Selecting representatives", "Preparing exports"];
 
 export default function SeqSieve({ setPage }) {
   const [input, setInput] = useState({ name: "", text: "" });
@@ -27,10 +27,10 @@ export default function SeqSieve({ setPage }) {
     const out = runDedupe(input.text, settings);
     setResult(out);
     updateWorkspace({ currentFileName: input.name, currentSequenceType: out.sequenceType, lastFASTAOutput: out.exports.fasta, lastFASTQOutput: out.exports.fastq, lastProteinOutput: out.sequenceType === "Protein" ? out.exports.fasta : "", lastReport: out.exports.report });
-    addOutput({ tool: "SeqSieve", name: "sifted FASTA", text: out.exports.fasta });
+    addOutput({ tool: "SeqSieve", name: "deduplicated FASTA", text: out.exports.fasta });
   }
   return (
-    <KitchenBench title="SeqSieve" kitchenTitle="Sequence Sifter" subtitle="Exact FASTA/FASTQ deduplication with counts, mappings, duplicate groups, and reproducibility reports." icon={<SequenceSifterIcon />}>
+    <KitchenBench title="SeqSieve" kitchenTitle="Exact Deduplication" subtitle="Exact FASTA/FASTQ deduplication with counts, mappings, duplicate groups, and reproducibility reports." icon={<SequenceSifterIcon />}>
       <IngredientDropzone fileName={input.name} text={input.text} onLoad={setInput} onSample={() => setInput(sampleFiles.SeqSieve)} onClear={() => { setInput({ name: "", text: "" }); setResult(null); }} />
       <RecipeControls>
         <Field label="Format"><select value={settings.format} onChange={(e) => set({ format: e.target.value })}><option>Auto</option><option>FASTA</option><option>FASTQ</option></select></Field>
@@ -44,15 +44,15 @@ export default function SeqSieve({ setPage }) {
         <Field label="Remove gaps"><input type="checkbox" checked={settings.removeGaps} onChange={(e) => set({ removeGaps: e.target.checked })} /></Field>
         <Field label="Reverse-complement aware"><input type="checkbox" checked={settings.reverseComplement} onChange={(e) => set({ reverseComplement: e.target.checked })} /></Field>
       </RecipeControls>
-      <button className="button primary run-button" disabled={!input.text} onClick={run}>Sift Sequences</button>
+      <button className="button primary run-button" disabled={!input.text} onClick={run}>Deduplicate sequences</button>
       <ProgressOven stages={stages} active={Boolean(result)} />
       {result && <><ResultPlate summary={{ ...result.summary, runtime: "browser local" }} /><Tabs sections={{
-        "Sifted FASTA/FASTQ": <SequencePreview text={result.format === "FASTQ" ? result.exports.fastq : result.exports.fasta} />,
+        "Deduplicated FASTA/FASTQ": <SequencePreview text={result.format === "FASTQ" ? result.exports.fastq : result.exports.fasta} />,
         "Duplicate groups": <DataTable rows={result.duplicateGroups.map((g) => ({ group_id: g.groupId, representative_id: g.representativeId, count: g.count, key_hash: g.keyHash }))} />,
         "Mapping table": <DataTable rows={result.mappingRows} />,
         "Counts": <DataTable rows={result.countRows} />,
         "JSON metadata": <SequencePreview text={result.exports.json} />,
-      }} /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="seqsieve" exports={result.exports} /><div className="send-row"><button className="button secondary" onClick={() => setPage("ReadLens")}>Send sifted FASTA to ReadLens</button><button className="button secondary" onClick={() => setPage("SeqCompare")}>Send sifted FASTA to SeqCompare</button><button className="button secondary" onClick={() => setPage("HMMForge")}>Send sifted protein FASTA to HMMForge</button></div></>}
+      }} /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="seqsieve" exports={result.exports} /><div className="send-row"><button className="button secondary" onClick={() => setPage("ReadLens")}>Send deduplicated FASTA to ReadLens</button><button className="button secondary" onClick={() => setPage("SeqCompare")}>Send deduplicated FASTA to SeqCompare</button><button className="button secondary" onClick={() => setPage("HMMForge")}>Send deduplicated protein FASTA to HMMForge</button></div></>}
       <HelpDrawer><p>SeqSieve performs exact deduplication. It is not CD-HIT, MMseqs2, VSEARCH, BLAST, or HMMER clustering.</p></HelpDrawer>
     </KitchenBench>
   );

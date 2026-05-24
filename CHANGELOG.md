@@ -8,5 +8,5 @@
 - Added SeqCompare multi-file FASTA comparison.
 - Added ORFScout ORF discovery and six-frame translation.
 - Added HMMForge protein-family preparation and HMMER command recipes.
-- Added Taste Tests validation page.
+- Added Validation page.
 - Added browser-only local processing and GitHub Pages deployment.

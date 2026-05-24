@@ -1,6 +1,6 @@
 import { readFileAsText, formatFileSize, largeFileWarnings } from "../lib/fileUtils.js";
 
-export default function IngredientDropzone({ fileName, text, onLoad, sampleLabel = "Load Sample Ingredients", onSample, onClear }) {
+export default function IngredientDropzone({ fileName, text, onLoad, sampleLabel = "Load sample data", onSample, onClear }) {
   async function handleFile(event) {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -10,7 +10,7 @@ export default function IngredientDropzone({ fileName, text, onLoad, sampleLabel
   return (
     <section className="panel dropzone">
       <div>
-        <p className="panel-kicker">Ingredient Drop</p>
+        <p className="panel-kicker">Input File</p>
         <h2>Upload FASTA/FASTQ</h2>
         <p>Files are read locally in your browser. No sequence data are uploaded.</p>
       </div>
@@ -20,7 +20,7 @@ export default function IngredientDropzone({ fileName, text, onLoad, sampleLabel
       </label>
       <div className="drop-actions">
         <button className="button secondary" onClick={onSample}>{sampleLabel}</button>
-        <button className="button ghost" onClick={onClear}>Clear current ingredients</button>
+        <button className="button ghost" onClick={onClear}>Clear input</button>
       </div>
       {fileName && <p className="ingredient-note">Loaded: <strong>{fileName}</strong> ({text.length.toLocaleString()} characters{typeof text.size === "number" ? `, ${formatFileSize(text.size)}` : ""})</p>}
     </section>

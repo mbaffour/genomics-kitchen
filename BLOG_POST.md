@@ -1,67 +1,54 @@
-# Introducing Genomics Kitchen: a browser-based toolkit for preparing sequence data
+# Introducing Genomics Kitchen: browser-based sequence prep with a sharper edge
 
 **Author:** Michael Baffour Awuah
 
-Sequence analysis often starts with messy raw files: duplicate records, unclear quality, inconsistent headers, scattered FASTA batches, and protein families that need cleanup before alignment. Genomics Kitchen is built for that first practical step, where raw sequence ingredients become clean, labeled, analysis-ready outputs.
+Bioinformatics does not usually begin with a clean, obedient file. It begins with a FASTA someone renamed three times, a FASTQ with suspicious quality tails, duplicate records that may or may not matter, and a folder of sequence sets that need to be compared before anyone can make a confident next move.
 
-Genomics Kitchen is a browser-based suite for preparing FASTA and FASTQ data locally. Files stay in your browser and are not uploaded to a server. There is no backend, tracking, analytics, or hidden network call.
+Genomics Kitchen is my browser-based toolkit for that first mile of sequence analysis. It helps prepare FASTA and FASTQ files locally, without uploading sequence data to a server.
 
-Why a kitchen? Raw sequence ingredients come in; clean, labeled, analysis-ready outputs come out. The metaphor makes the workflow easier to remember, but the scientific caveats stay visible.
+The name is playful, but the app is serious about the biology: exact matching is labeled as exact matching, ORF prediction is not oversold as annotation, and HMMForge prepares inputs and command recipes rather than pretending the browser can replace MAFFT or HMMER.
 
-## The Stations
+## Try it
 
-- **SeqSieve, Sequence Sifter:** exact deduplication with counts, mappings, duplicate groups, and reports.
-- **ReadLens, Quality Tasting Station:** length, composition, FASTQ quality, duplicate estimates, and warnings.
-- **SeqCompare, Comparison Cutting Board:** core, accessory, file-specific, shared-by-subset, presence/absence, and pairwise overlap across multiple FASTA files.
-- **ORFScout, Gene Recipe Finder:** ORF discovery and six-frame translation for nucleotide sequences.
-- **HMMForge, Protein Prep Bench:** protein-family cleanup, safe IDs, and command recipes for MAFFT/HMMER workflows.
+- [Open Genomics Kitchen](https://mbaffour.github.io/genomics-kitchen/)
+- [Report a bug](https://github.com/mbaffour/genomics-kitchen/issues/new?template=bug_report.yml)
+- [Suggest an improvement](https://github.com/mbaffour/genomics-kitchen/issues/new?template=feature_request.yml)
+- [Send a scientific validation note](https://github.com/mbaffour/genomics-kitchen/issues/new?template=scientific_validation.yml)
 
-## Tutorial 1: Deduplicate a protein FASTA with SeqSieve
+## What it does
 
-1. Open SeqSieve.
-2. Upload a protein FASTA.
-3. Choose Protein.
-4. Compare by sequence content.
-5. Keep the first representative.
-6. Run Sift Sequences.
-7. Download the deduplicated FASTA, mapping TSV, counts TSV, and report.
+**SeqSieve: Exact Deduplication**
 
-## Tutorial 2: Inspect reads with ReadLens
+Collapse exact FASTA/FASTQ duplicates while preserving representative records, counts, mappings, duplicate groups, and reproducibility metadata.
 
-1. Upload FASTQ.
-2. Run Taste Quality.
-3. Review read length, quality, duplicate rate, GC content, and N content.
-4. Export the QC report.
+**ReadLens: Sequence Quality Control**
 
-## Tutorial 3: Compare multiple FASTA files with SeqCompare
+Inspect sequence length, composition, FASTQ Phred+33 quality, duplicate signals, invalid characters, and parser warnings.
 
-1. Upload three FASTA files.
-2. Compare by sequence content.
-3. Review core, accessory, and file-specific sequence sets.
-4. Export the presence/absence matrix and core FASTA.
+**SeqCompare: Multi-FASTA Comparison**
 
-## Tutorial 4: Find ORFs with ORFScout
+Compare two or more FASTA files by exact sequence, ID, or full record. Export core, accessory, file-specific, shared-by-subset, pairwise overlap, and presence/absence results.
 
-1. Upload nucleotide FASTA.
-2. Select genetic code and start codons.
-3. Choose minimum ORF length.
-4. Run Find Recipes.
-5. Export ORF protein FASTA and the ORF table.
+**ORFScout: ORF Discovery**
 
-## Tutorial 5: Prepare a protein family with HMMForge
+Find candidate ORFs and generate six-frame translations. Coordinates are reported as 1-based inclusive positions.
 
-1. Upload protein FASTA.
-2. Deduplicate exact sequences.
-3. Set length and ambiguity filters.
-4. Review flagged and removed sequences.
-5. Export cleaned FASTA and the HMMER command recipe.
+**HMMForge: Protein Family Preparation**
 
-## Suggested Workflows
+Clean protein FASTA files, create safe alignment IDs, flag outliers, preserve duplicate mappings, and generate MAFFT/HMMER command recipes.
 
-- Protein family to HMM: ReadLens -> SeqSieve -> HMMForge.
-- Phage genome exploration: ORFScout -> HMMForge.
-- Multi-file sequence comparison: SeqSieve -> SeqCompare.
-- QC before downstream analysis: ReadLens -> SeqSieve.
+## Why browser-only matters
+
+Sometimes you want a quick, transparent preprocessing step without sending sequence data anywhere. Genomics Kitchen runs locally in the browser: no backend, no upload, no analytics, no tracking, and no hidden network calls.
+
+That makes it useful for small research checks, teaching, reviewer-facing demos, and early workflow planning. It is not a replacement for full command-line pipelines, but it can make the first pass much less painful.
+
+## Suggested workflows
+
+- Protein family cleanup: **ReadLens -> SeqSieve -> HMMForge**
+- Phage genome exploration: **ORFScout -> HMMForge**
+- Multi-file sequence comparison: **SeqSieve -> SeqCompare**
+- QC before downstream analysis: **ReadLens -> SeqSieve**
 
 ## Screenshots
 
@@ -72,16 +59,22 @@ Why a kitchen? Raw sequence ingredients come in; clean, labeled, analysis-ready 
 ![ORFScout](../screenshots/orfscout.png)
 ![HMMForge](../screenshots/hmmforge.png)
 
-## Scientific Caveats
+## Scientific caveats
 
-Exact deduplication is not clustering. ORF prediction is not gene annotation. HMMForge does not run HMMER in the browser. FASTQ deduplication can affect abundance interpretation.
+SeqSieve performs exact deduplication, not clustering. Similar but non-identical sequences still need tools such as CD-HIT, MMseqs2, VSEARCH, BLAST, or HMMER depending on the question.
 
-## Bugs and Features
+SeqCompare reports exact overlap. Shared exact sequence identity is useful, but it is not the same as evolutionary homology.
 
-Open an issue at <https://github.com/mbaffour/genomics-kitchen/issues>. Include the tool, browser/OS, file format, expected behavior, observed behavior, screenshots if possible, and a small non-sensitive example file if safe.
+ORFScout predicts candidate open reading frames. Functional annotation still requires homology, domains, synteny, expression evidence, or experiments.
 
-## Short Website Version
+HMMForge prepares protein FASTA files and command recipes. It does not run MAFFT or HMMER inside the browser.
 
-Genomics Kitchen is a browser-based toolkit for preparing sequence data locally. Deduplicate FASTA/FASTQ files, inspect quality, compare multiple FASTA batches, find ORFs, and prepare protein families for HMM workflows without uploading sequence data to a server.
+FASTQ deduplication can change abundance interpretation, so count tables and mappings matter.
 
-Researchers, students, and developers are invited to test it, report scientific edge cases, and contribute.
+## Help improve it
+
+The most valuable feedback is specific. If something breaks, tell me which tool you used, your browser/OS, the input format, what you expected, and what happened. If it is safe, include a tiny non-sensitive example file.
+
+If the scientific behavior seems wrong, open a validation issue with the example and your reasoning. That kind of feedback is exactly how tools like this become trustworthy.
+
+Short version: Genomics Kitchen is a local-first browser app for sequence preprocessing. It is meant to be approachable, but it is not trying to be cute at the expense of scientific clarity.

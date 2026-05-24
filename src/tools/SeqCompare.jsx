@@ -19,7 +19,7 @@ export default function SeqCompare({ setPage }) {
   const set = (patch) => setSettings((old) => ({ ...old, ...patch }));
   function run() { setResult(compareFastaTexts(files, settings)); }
   return (
-    <KitchenBench title="SeqCompare" kitchenTitle="Comparison Cutting Board" subtitle="Compare multiple FASTA sequence batches by exact sequence, ID, or full record." icon={<CuttingBoardIcon />}>
+    <KitchenBench title="SeqCompare" kitchenTitle="Multi-FASTA Comparison" subtitle="Compare multiple FASTA sequence batches by exact sequence, ID, or full record." icon={<CuttingBoardIcon />}>
       <MultiIngredientDropzone files={files} onLoad={(newFiles) => setFiles((old) => [...old, ...newFiles])} onRemove={(i) => setFiles((old) => old.filter((_, idx) => idx !== i))} onRename={(i, label) => setFiles((old) => old.map((f, idx) => idx === i ? { ...f, label } : f))} onSample={() => setFiles(sampleFiles.SeqCompare)} onClear={() => { setFiles([]); setResult(null); }} />
       <RecipeControls>
         <Field label="Sequence type"><select value={settings.sequenceType} onChange={(e) => set({ sequenceType: e.target.value })}><option>Auto</option><option>DNA</option><option>RNA</option><option>Protein</option></select></Field>
@@ -31,7 +31,7 @@ export default function SeqCompare({ setPage }) {
         <Field label="Remove gaps"><input type="checkbox" checked={settings.removeGaps} onChange={(e) => set({ removeGaps: e.target.checked })} /></Field>
         <Field label="Reverse-complement aware"><input type="checkbox" checked={settings.reverseComplement} onChange={(e) => set({ reverseComplement: e.target.checked })} /></Field>
       </RecipeControls>
-      <button className="button primary run-button" disabled={files.length < 2} onClick={run}>Chop and Compare Batches</button>
+      <button className="button primary run-button" disabled={files.length < 2} onClick={run}>Compare sequence sets</button>
       {result && <><ResultPlate summary={result.summary} /><section className="panel chart-grid"><MiniStat label="Core" value={result.core.length} /><MiniStat label="Accessory" value={result.accessory.length} /><MiniStat label="File-specific" value={result.fileSpecific.length} /></section><DataTable rows={result.pairwise} /><DataTable rows={result.globalKeys.map((g) => ({ key_id: g.globalKeyId, representative_id: g.representativeId, length: g.representativeLength, presence_count: g.presentInFiles.length, pattern: g.membershipPattern }))} /><SequencePreview text={result.exports.coreFasta} /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="seqcompare" exports={result.exports} /><div className="send-row"><button className="button secondary" onClick={() => setPage("ReadLens")}>Send core FASTA to ReadLens</button><button className="button secondary" onClick={() => setPage("SeqSieve")}>Send accessory FASTA to SeqSieve</button><button className="button secondary" onClick={() => setPage("HMMForge")}>Send selected subset to HMMForge</button></div></>}
     </KitchenBench>
   );

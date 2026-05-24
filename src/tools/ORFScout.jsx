@@ -18,7 +18,7 @@ export default function ORFScout({ setPage }) {
   const set = (patch) => setSettings((old) => ({ ...old, ...patch }));
   function run() { setResult(runORFScout(input.text, settings)); }
   return (
-    <KitchenBench title="ORFScout" kitchenTitle="Gene Recipe Finder" subtitle="ORF discovery and six-frame translation for nucleotide sequences." icon={<RecipeFinderIcon />}>
+    <KitchenBench title="ORFScout" kitchenTitle="ORF Discovery" subtitle="ORF discovery and six-frame translation for nucleotide sequences." icon={<RecipeFinderIcon />}>
       <IngredientDropzone fileName={input.name} text={input.text} onLoad={setInput} onSample={() => setInput(sampleFiles.ORFScout)} onClear={() => { setInput({ name: "", text: "" }); setResult(null); }} />
       <RecipeControls>
         <Field label="Genetic code"><select value={settings.geneticCode} onChange={(e) => set({ geneticCode: e.target.value })}><option value="standard">Standard code</option><option value="bacterial">Bacterial/archaeal/plastid code</option></select></Field>
@@ -30,7 +30,7 @@ export default function ORFScout({ setPage }) {
         <Field label="TTG start"><input type="checkbox" checked={settings.startCodons.includes("TTG")} onChange={(e) => set({ startCodons: toggle(settings.startCodons, "TTG", e.target.checked) })} /></Field>
         <Field label="Include partial ORFs"><input type="checkbox" checked={settings.includePartial} onChange={(e) => set({ includePartial: e.target.checked })} /></Field>
       </RecipeControls>
-      <button className="button primary run-button" disabled={!input.text} onClick={run}>Find Recipes</button>
+      <button className="button primary run-button" disabled={!input.text} onClick={run}>Find ORFs</button>
       {result && <><ResultPlate summary={result.summary} /><GenomeTrack orfs={result.orfs} /><DataTable rows={result.orfs.map((o) => ({ orf_id: o.orfId, record_id: o.recordId, strand: o.strand, frame: o.frame, start: o.start, end: o.end, length_nt: o.lengthNt, length_aa: o.lengthAa, start_codon: o.startCodon, stop_codon: o.stopCodon, partial_start: o.partialStart, partial_stop: o.partialStop }))} /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="orfscout" exports={result.exports} /><div className="send-row"><button className="button secondary" onClick={() => setPage("HMMForge")}>Send protein ORF FASTA to HMMForge</button><button className="button secondary" onClick={() => setPage("ReadLens")}>Send nucleotide ORF FASTA to ReadLens</button></div></>}
     </KitchenBench>
   );

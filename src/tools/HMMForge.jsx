@@ -19,7 +19,7 @@ export default function HMMForge({ setPage }) {
   const set = (patch) => setSettings((old) => ({ ...old, ...patch }));
   function run() { setResult(runHMMForge(input.text, settings)); }
   return (
-    <KitchenBench title="HMMForge" kitchenTitle="Protein Prep Bench" subtitle="Prepare protein families for alignment and profile HMM workflows." icon={<ProteinPrepBenchIcon />}>
+    <KitchenBench title="HMMForge" kitchenTitle="Protein Family Preparation" subtitle="Prepare protein families for alignment and profile HMM workflows." icon={<ProteinPrepBenchIcon />}>
       <IngredientDropzone fileName={input.name} text={input.text} onLoad={setInput} onSample={() => setInput(sampleFiles.HMMForge)} onClear={() => { setInput({ name: "", text: "" }); setResult(null); }} />
       <RecipeControls>
         <Field label="Exact protein deduplication"><input type="checkbox" checked={settings.dedupe} onChange={(e) => set({ dedupe: e.target.checked })} /></Field>
@@ -31,7 +31,7 @@ export default function HMMForge({ setPage }) {
         <Field label="Maximum percent gaps"><input type="number" value={settings.maxGaps} onChange={(e) => set({ maxGaps: e.target.value })} /></Field>
         <Field label="Trim terminal stop"><input type="checkbox" checked={settings.trimTerminalStop} onChange={(e) => set({ trimTerminalStop: e.target.checked })} /></Field>
       </RecipeControls>
-      <button className="button primary run-button" disabled={!input.text} onClick={run}>Prep Protein Family</button>
+      <button className="button primary run-button" disabled={!input.text} onClick={run}>Prepare protein family</button>
       {result && <><ResultPlate summary={result.summary} /><DataTable rows={result.classifications} columns={["originalIndex", "originalId", "safeId", "length", "percentX", "percentGaps", "hasInternalStop", "lengthOutlierStatus", "decision", "reasons"]} /><SequencePreview text={result.commands} /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="hmmforge" exports={result.exports} /><div className="send-row"><button className="button secondary" onClick={() => setPage("ReadLens")}>Send cleaned protein FASTA to ReadLens</button><button className="button secondary" onClick={() => setPage("SeqSieve")}>Send cleaned protein FASTA to SeqSieve</button></div></>}
     </KitchenBench>
   );

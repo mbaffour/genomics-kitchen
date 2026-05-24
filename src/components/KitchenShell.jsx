@@ -2,7 +2,7 @@ import ThemeToggle from "./ThemeToggle.jsx";
 import LiveKitchenArt from "./LiveKitchenArt.jsx";
 import WorkflowPanel from "./WorkflowPanel.jsx";
 
-const nav = ["Home", "SeqSieve", "ReadLens", "SeqCompare", "ORFScout", "HMMForge", "Taste Tests", "About"];
+const nav = ["Home", "SeqSieve", "ReadLens", "SeqCompare", "ORFScout", "HMMForge", "Validation", "Blog", "About"];
 
 export default function KitchenShell({ page, setPage, theme, setTheme, children }) {
   return (

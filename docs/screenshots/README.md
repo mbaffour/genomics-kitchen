@@ -7,7 +7,7 @@
    ```
 
 2. Open the app in a browser.
-3. Load sample ingredients for each station.
+3. Load sample data for each tool.
 4. Capture screenshots:
    - `home.png`
    - `seqsieve.png`

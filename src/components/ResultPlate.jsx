@@ -1,4 +1,4 @@
-export default function ResultPlate({ title = "Tasting Notes", summary = {} }) {
+export default function ResultPlate({ title = "Results Summary", summary = {} }) {
   return (
     <section className="panel result-plate">
       <p className="panel-kicker">{title}</p>

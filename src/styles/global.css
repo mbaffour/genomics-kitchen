@@ -21,6 +21,7 @@ main { position: relative; z-index: 1; padding: 28px clamp(16px, 3vw, 44px) 160p
 .hero-copy > p:not(.tagline), .bench-header p { color: var(--gk-text-muted); max-width: 720px; font-size: 18px; line-height: 1.65; }
 .privacy-badge { display: inline-flex; width: fit-content; border: 1px solid color-mix(in srgb, var(--gk-sky), transparent 45%); background: color-mix(in srgb, var(--gk-sky), transparent 88%); color: var(--gk-text); border-radius: 8px; padding: 10px 12px; font-weight: 700; }
 .hero-actions, .drop-actions, .send-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.support-actions { margin-top: 12px; }
 .button, .file-button { border: 1px solid var(--gk-border); border-radius: 8px; padding: 11px 15px; font-weight: 800; color: var(--gk-text); background: var(--gk-surface-raised); text-decoration: none; }
 .button.primary { background: var(--gk-coral); color: #111827; border-color: var(--gk-coral); }
 .button.secondary { background: color-mix(in srgb, var(--gk-sky), transparent 86%); border-color: color-mix(in srgb, var(--gk-sky), transparent 48%); }
@@ -98,6 +99,10 @@ td { color: var(--gk-text-muted); font-family: "SFMono-Regular", Consolas, "Libe
 .method-card p { line-height: 1.65; }
 .help-drawer { color: var(--gk-text-muted); }
 .help-drawer summary { cursor: pointer; font-weight: 800; color: var(--gk-sky); }
+.blog-page .bench-header { align-items: end; }
+.blog-card { line-height: 1.7; }
+.blog-card h2 { margin-top: 0; }
+.blog-tool-grid { margin-top: 0; }
 .workflow-panel { position: fixed; right: 18px; bottom: 18px; z-index: 4; width: min(360px, calc(100vw - 36px)); padding: 16px; display: grid; gap: 8px; }
 .workflow-panel span { color: var(--gk-text-muted); }
 .workflow-actions { display: flex; flex-wrap: wrap; gap: 4px; }

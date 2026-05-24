@@ -21,9 +21,10 @@ Genomics Kitchen is a molecular kitchen where raw sequence ingredients are clean
 
 - Dark molecular kitchen countertop and clean lab-bench light mode.
 - Glass ingredient jars, cutting boards, recipe cards, sifters, measuring cups, progress oven, and export pantry.
-- Subtle DNA steam, protein spices, phage-shaped utensils, and molecular cutting-board grids.
+- Realistic generated photography for the hero and station cards: glass, steel, wood, bead-like sequence ingredients, protein ribbon models, and grounded shadows.
+- Subtle DNA steam, protein spices, phage-shaped utensils, and molecular cutting-board grids as supporting details only.
 
-Avoid cartoonish children’s-game styling, generic blue dashboards, stock kitchen clipart, excessive gradients, low-contrast neon, fake AI hype, and scientific overclaiming.
+Avoid cartoonish children’s-game styling, generic blue dashboards, stock kitchen clipart, excessive gradients, low-contrast neon, fake AI hype, synthetic “AI art” clutter, and scientific overclaiming.
 
 ## Tokens
 

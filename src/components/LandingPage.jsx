@@ -1,17 +1,18 @@
 import ToolCard from "./ToolCard.jsx";
 
 const tools = [
-  ["SeqSieve", "Sequence Sifter", "Exact deduplication with counts and mapping tables."],
-  ["ReadLens", "Quality Tasting Station", "Inspect sequence quality, length, composition, and warnings."],
-  ["SeqCompare", "Comparison Cutting Board", "Compare multiple FASTA batches and find core, shared, and unique sequences."],
-  ["ORFScout", "Gene Recipe Finder", "Find ORFs and translate nucleotide sequences in six frames."],
-  ["HMMForge", "Protein Prep Bench", "Prepare protein families for alignment and HMMER workflows."],
+  ["SeqSieve", "Sequence Sifter", "Exact deduplication with counts and mapping tables.", "0% center"],
+  ["ReadLens", "Quality Tasting Station", "Inspect sequence quality, length, composition, and warnings.", "25% center"],
+  ["SeqCompare", "Comparison Cutting Board", "Compare multiple FASTA batches and find core, shared, and unique sequences.", "50% center"],
+  ["ORFScout", "Gene Recipe Finder", "Find ORFs and translate nucleotide sequences in six frames.", "75% center"],
+  ["HMMForge", "Protein Prep Bench", "Prepare protein families for alignment and HMMER workflows.", "100% center"],
 ];
 
 export default function LandingPage({ setPage }) {
+  const heroImage = `${import.meta.env.BASE_URL}graphics/molecular-kitchen-hero.png`;
   return (
     <div className="landing">
-      <section className="hero">
+      <section className="hero" style={{ "--hero-image": `url("${heroImage}")` }}>
         <div className="hero-copy">
           <h1>Genomics Kitchen</h1>
           <p className="tagline">Cook clean sequence data.</p>
@@ -23,14 +24,12 @@ export default function LandingPage({ setPage }) {
             <button className="button ghost" onClick={() => setPage("Taste Tests")}>Run Taste Tests</button>
           </div>
         </div>
-        <div className="hero-board" aria-hidden="true">
-          <div className="glass-jar">FASTA</div><div className="glass-jar">FASTQ</div><div className="glass-jar">TSV</div>
-          <div className="sequence-ribbon">ATG CGT TAA</div>
-          <div className="recipe-slip">exact keys + counts + reports</div>
-        </div>
+        <figure className="hero-photo">
+          <img src={heroImage} alt="Realistic molecular kitchen bench with glassware, protein models, and DNA-like vapor." />
+        </figure>
       </section>
       <section className="tool-grid">
-        {tools.map(([tool, kitchenTitle, description]) => <ToolCard key={tool} tool={tool} kitchenTitle={kitchenTitle} description={description} onOpen={() => setPage(tool)} />)}
+        {tools.map(([tool, kitchenTitle, description, imagePosition]) => <ToolCard key={tool} tool={tool} kitchenTitle={kitchenTitle} description={description} imagePosition={imagePosition} onOpen={() => setPage(tool)} />)}
       </section>
       <section className="workflow-recipes">
         <h2>Workflow recipe cards</h2>

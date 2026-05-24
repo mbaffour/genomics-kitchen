@@ -2,11 +2,15 @@ import { CuttingBoardIcon, ProteinPrepBenchIcon, QualityTastingIcon, RecipeFinde
 
 const icons = { SeqSieve: SequenceSifterIcon, ReadLens: QualityTastingIcon, SeqCompare: CuttingBoardIcon, ORFScout: RecipeFinderIcon, HMMForge: ProteinPrepBenchIcon };
 
-export default function ToolCard({ tool, kitchenTitle, description, onOpen }) {
+export default function ToolCard({ tool, kitchenTitle, description, onOpen, imagePosition = "center" }) {
   const Icon = icons[tool] || SequenceSifterIcon;
+  const stationStrip = `${import.meta.env.BASE_URL}graphics/station-vignettes.png`;
   return (
     <article className="tool-card">
-      <Icon />
+      <div className="tool-media">
+        <img src={stationStrip} alt="" style={{ objectPosition: imagePosition }} loading="lazy" />
+        <span className="tool-icon-badge"><Icon /></span>
+      </div>
       <div>
         <p className="tool-name">{tool}</p>
         <h3>{kitchenTitle}</h3>

@@ -80,6 +80,10 @@ main { position: relative; z-index: 1; padding: 28px clamp(16px, 3vw, 44px) 160p
 .stat span { display: block; color: var(--gk-text-muted); text-transform: capitalize; font-size: 13px; }
 .stat strong { display: block; color: var(--gk-citrus); font-size: 24px; margin-top: 4px; overflow-wrap: anywhere; }
 .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.table-block { display: grid; gap: 8px; }
+.table-block-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.table-caption { color: var(--gk-text); font-weight: 600; font-size: 13px; }
+.table-csv { padding: 4px 12px; font-size: 12px; margin-left: auto; }
 .table-wrap { overflow: auto; border: 1px solid var(--gk-border); border-radius: 8px; }
 table { width: 100%; border-collapse: collapse; min-width: 720px; }
 th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--gk-border); vertical-align: top; }
@@ -109,13 +113,32 @@ td { color: var(--gk-text-muted); font-family: "SFMono-Regular", Consolas, "Libe
 .progress-oven ol { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; padding-left: 20px; }
 .oven { height: 12px; border-radius: 999px; background: var(--gk-countertop); overflow: hidden; border: 1px solid var(--gk-border); }
 .oven span { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, var(--gk-coral), var(--gk-citrus), var(--gk-sky), var(--gk-berry)); transform-origin: left; }
-.chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
 .bars { height: 160px; display: flex; align-items: end; gap: 5px; border-bottom: 1px solid var(--gk-border); }
 .bars span { flex: 1; background: linear-gradient(180deg, var(--gk-coral), var(--gk-sky)); border-radius: 4px 4px 0 0; min-width: 6px; }
+/* Publication-quality figures (PubHistogram): colorblind-safe fill, labeled axes. */
+.pub-figure { margin: 0; display: grid; gap: 8px; }
+.pub-histogram { width: 100%; height: auto; background: var(--gk-countertop); border: 1px solid var(--gk-border); border-radius: 8px; }
+.pf-title { fill: var(--gk-text); font-size: 14px; font-weight: 700; }
+.pf-axis { stroke: var(--gk-text-muted); stroke-width: 1.25; }
+.pf-grid { stroke: var(--gk-border); stroke-width: 1; opacity: .6; }
+.pf-tick { fill: var(--gk-text-muted); font-size: 11px; }
+.pf-tick-y { text-anchor: end; }
+.pf-tick-x { text-anchor: middle; }
+.pf-axis-title { fill: var(--gk-text); font-size: 12px; font-weight: 600; text-anchor: middle; }
+.pf-bar { stroke: var(--gk-bg); stroke-width: .5; }
+.pf-actions { display: flex; gap: 8px; }
+.pf-actions .button { padding: 4px 12px; font-size: 12px; }
 .genome-track { position: relative; height: 210px; background-image: linear-gradient(90deg, var(--gk-border) 1px, transparent 1px); background-size: 10% 100%; }
 .genome-track::after { content: ""; position: absolute; left: 20px; right: 20px; top: 110px; height: 2px; background: var(--gk-border); }
-.orf { position: absolute; height: 16px; min-width: 8px; border-radius: 8px; top: 88px; background: var(--gk-coral); z-index: 1; }
-.orf.reverse { top: 128px; background: var(--gk-berry); }
+/* Okabe-Ito colorblind-safe strand colors: blue (forward) / vermillion (reverse). */
+.orf { position: absolute; height: 16px; min-width: 8px; border-radius: 8px; top: 88px; background: #0072B2; z-index: 1; }
+.orf.reverse { top: 128px; background: #D55E00; }
+.track-legend { display: flex; gap: 16px; font-size: 12px; color: var(--gk-text-muted); margin: 0 0 8px; }
+.track-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.track-legend i { width: 14px; height: 10px; border-radius: 3px; display: inline-block; }
+.track-legend .fwd { background: #0072B2; }
+.track-legend .rev { background: #D55E00; }
 @media (max-width: 1040px) {
   .hero { grid-template-columns: 1fr; padding-top: 40px; }
   .tool-grid, .workflow-recipes { grid-template-columns: repeat(2, 1fr); margin-top: 24px; }

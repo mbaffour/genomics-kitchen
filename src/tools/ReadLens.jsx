@@ -8,6 +8,7 @@ import ExportPantry from "../components/ExportPantry.jsx";
 import MethodRecipeCard from "../components/MethodRecipeCard.jsx";
 import DataTable from "../components/DataTable.jsx";
 import HelpDrawer from "../components/HelpDrawer.jsx";
+import PubHistogram from "../components/PubHistogram.jsx";
 import { QualityTastingIcon } from "../art/kitchenMotifs.jsx";
 import { runQC } from "../lib/qcEngine.js";
 import { sampleFiles } from "../lib/demoData.js";
@@ -37,12 +38,29 @@ export default function ReadLens({ setPage }) {
         <Field label="Reverse-complement duplicate estimate"><input type="checkbox" checked={settings.reverseComplement} onChange={(e) => set({ reverseComplement: e.target.checked })} /></Field>
       </RecipeControls>
       <button className="button primary run-button" disabled={!input.text} onClick={run}>Inspect quality</button>
-      {result && <><ResultPlate summary={result.summary} /><ChartPanel charts={result.charts} /><DataTable rows={result.recordMetrics} /><DataTable rows={result.duplicates} /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="readlens" exports={result.exports} /><button className="button secondary" onClick={() => setPage("SeqSieve")}>Send to SeqSieve</button></>}
+      {result && <><ResultPlate summary={result.summary} /><ChartPanel charts={result.charts} sequenceType={result.sequenceType} format={result.format} /><DataTable rows={result.recordMetrics} caption="Per-sequence QC metrics (length in bp/aa, GC %, N %, mean Phred quality)" csvName="readlens_record_metrics" /><DataTable rows={result.duplicates} caption="Exact duplicate sequence groups" csvName="readlens_duplicates" /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="readlens" exports={result.exports} /><button className="button secondary" onClick={() => setPage("SeqSieve")}>Send to SeqSieve</button></>}
       <HelpDrawer><p>Duplicate reads are a signal to interpret, not an automatic failure. Protein inputs skip GC/N as biological metrics.</p></HelpDrawer>
     </KitchenBench>
   );
 }
 
-function ChartPanel({ charts }) {
-  return <section className="panel chart-grid">{Object.entries(charts).map(([name, bins]) => <div key={name}><h3>{name}</h3><div className="bars">{bins.map((b, i) => <span key={i} style={{ height: `${Math.max(6, b.count * 14)}px` }} title={`${b.start.toFixed(1)}-${b.end.toFixed(1)}: ${b.count}`} />)}</div></div>)}</section>;
+function ChartPanel({ charts, sequenceType, format }) {
+  const isNucleotide = ["DNA", "RNA"].includes(sequenceType);
+  const lengthUnit = sequenceType === "Protein" ? "aa" : "bp";
+  // Only render figures that carry data and are biologically meaningful for the
+  // detected sequence type / format. Each figure has axis titles WITH units.
+  const figures = [
+    { key: "lengthHistogram", title: "Sequence length distribution", xLabel: `Sequence length (${lengthUnit})`, yLabel: "Sequence count", base: "readlens_length_histogram", show: true },
+    { key: "gcHistogram", title: "GC content distribution", xLabel: "GC content (%)", yLabel: "Sequence count", base: "readlens_gc_histogram", show: isNucleotide },
+    { key: "qualityHistogram", title: "Mean read quality distribution", xLabel: "Mean Phred quality score (Phred+33)", yLabel: "Read count", base: "readlens_quality_histogram", show: format === "FASTQ" },
+  ];
+  const visible = figures.filter((f) => f.show && charts[f.key] && charts[f.key].length);
+  if (!visible.length) return null;
+  return (
+    <section className="panel chart-grid">
+      {visible.map((f) => (
+        <PubHistogram key={f.key} bins={charts[f.key]} title={f.title} xLabel={f.xLabel} yLabel={f.yLabel} baseName={f.base} />
+      ))}
+    </section>
+  );
 }

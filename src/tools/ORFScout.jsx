@@ -31,12 +31,23 @@ export default function ORFScout({ setPage }) {
         <Field label="Include partial ORFs"><input type="checkbox" checked={settings.includePartial} onChange={(e) => set({ includePartial: e.target.checked })} /></Field>
       </RecipeControls>
       <button className="button primary run-button" disabled={!input.text} onClick={run}>Find ORFs</button>
-      {result && <><ResultPlate summary={result.summary} /><GenomeTrack orfs={result.orfs} /><DataTable rows={result.orfs.map((o) => ({ orf_id: o.orfId, record_id: o.recordId, strand: o.strand, frame: o.frame, start: o.start, end: o.end, length_nt: o.lengthNt, length_aa: o.lengthAa, start_codon: o.startCodon, stop_codon: o.stopCodon, partial_start: o.partialStart, partial_stop: o.partialStop }))} /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="orfscout" exports={result.exports} /><div className="send-row"><button className="button secondary" onClick={() => setPage("HMMForge")}>Send protein ORF FASTA to HMMForge</button><button className="button secondary" onClick={() => setPage("ReadLens")}>Send nucleotide ORF FASTA to ReadLens</button></div></>}
+      {result && <><ResultPlate summary={result.summary} /><GenomeTrack orfs={result.orfs} /><DataTable rows={result.orfs.map((o) => ({ orf_id: o.orfId, record_id: o.recordId, strand: o.strand, frame: o.frame, start: o.start, end: o.end, length_nt: o.lengthNt, length_aa: o.lengthAa, start_codon: o.startCodon, stop_codon: o.stopCodon, partial_start: o.partialStart, partial_stop: o.partialStop }))} caption="Predicted ORFs (coordinates in bp, 1-based inclusive; length in nt and aa)" csvName="orfscout_orfs" /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="orfscout" exports={result.exports} /><div className="send-row"><button className="button secondary" onClick={() => setPage("HMMForge")}>Send protein ORF FASTA to HMMForge</button><button className="button secondary" onClick={() => setPage("ReadLens")}>Send nucleotide ORF FASTA to ReadLens</button></div></>}
     </KitchenBench>
   );
 }
 function toggle(list, item, checked) { return checked ? [...new Set([...list, item])] : list.filter((x) => x !== item); }
 function GenomeTrack({ orfs }) {
   const maxEnd = Math.max(1, ...orfs.map((o) => o.end));
-  return <section className="panel genome-track"><p>Coordinates are 1-based inclusive.</p>{orfs.slice(0, 80).map((o) => <span key={o.orfId} className={o.strand === "+" ? "orf forward" : "orf reverse"} style={{ left: `${(Math.min(o.start, o.end) / maxEnd) * 100}%`, width: `${(o.lengthNt / maxEnd) * 100}%` }} title={`${o.orfId} ${o.start}-${o.end}`} />)}</section>;
+  return (
+    <section className="panel">
+      <p className="track-legend">
+        <span><i className="fwd" />Forward strand (+)</span>
+        <span><i className="rev" />Reverse strand (&minus;)</span>
+      </p>
+      <p className="table-note">Position along sequence (bp), 1-based inclusive coordinates. Showing up to 80 ORFs.</p>
+      <div className="genome-track">
+        {orfs.slice(0, 80).map((o) => <span key={o.orfId} className={o.strand === "+" ? "orf forward" : "orf reverse"} style={{ left: `${(Math.min(o.start, o.end) / maxEnd) * 100}%`, width: `${(o.lengthNt / maxEnd) * 100}%` }} title={`${o.orfId} ${o.start}-${o.end} (${o.lengthNt} bp)`} />)}
+      </div>
+    </section>
+  );
 }

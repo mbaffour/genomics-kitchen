@@ -48,9 +48,9 @@ export default function SeqSieve({ setPage }) {
       <ProgressOven stages={stages} active={Boolean(result)} />
       {result && <><ResultPlate summary={{ ...result.summary, runtime: "browser local" }} /><Tabs sections={{
         "Deduplicated FASTA/FASTQ": <SequencePreview text={result.format === "FASTQ" ? result.exports.fastq : result.exports.fasta} />,
-        "Duplicate groups": <DataTable rows={result.duplicateGroups.map((g) => ({ group_id: g.groupId, representative_id: g.representativeId, count: g.count, key_hash: g.keyHash }))} />,
-        "Mapping table": <DataTable rows={result.mappingRows} />,
-        "Counts": <DataTable rows={result.countRows} />,
+        "Duplicate groups": <DataTable rows={result.duplicateGroups.map((g) => ({ group_id: g.groupId, representative_id: g.representativeId, count: g.count, key_hash: g.keyHash }))} caption="Duplicate sequence groups (member count per group)" csvName="seqsieve_duplicate_groups" />,
+        "Mapping table": <DataTable rows={result.mappingRows} caption="Original-to-representative sequence mapping" csvName="seqsieve_mapping" />,
+        "Counts": <DataTable rows={result.countRows} caption="Sequence counts before and after deduplication" csvName="seqsieve_counts" />,
         "JSON metadata": <SequencePreview text={result.exports.json} />,
       }} /><WarningPanel warnings={result.warnings} /><MethodRecipeCard methods={result.methods} settings={settings} /><ExportPantry tool="seqsieve" exports={result.exports} /><div className="send-row"><button className="button secondary" onClick={() => setPage("ReadLens")}>Send deduplicated FASTA to ReadLens</button><button className="button secondary" onClick={() => setPage("SeqCompare")}>Send deduplicated FASTA to SeqCompare</button><button className="button secondary" onClick={() => setPage("HMMForge")}>Send deduplicated protein FASTA to HMMForge</button></div></>}
       <HelpDrawer><p>SeqSieve performs exact deduplication. It is not CD-HIT, MMseqs2, VSEARCH, BLAST, or HMMER clustering.</p></HelpDrawer>
